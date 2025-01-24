@@ -6,11 +6,11 @@ class TxtFile {
   late String asRawString;
 
   TxtFile({required this.filePath}) {
-    asString = readAsString();
+    asString = _readAsString();
     asRawString = asString.replaceAll(RegExp(r'\r?\n'), r'\n');
   }
 
-  String readAsString() {
+  String _readAsString() {
     try {
       String fileContent = File(filePath).readAsStringSync();
       return fileContent;
