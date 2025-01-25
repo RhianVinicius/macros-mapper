@@ -1,6 +1,6 @@
 import "../../back_engine/utils/TxtFile.dart";
 
-Map<String, Map<String, dynamic>> decodeFoods() {
+Map<String, Map<String, dynamic>> decodeDayMeals() {
   TxtFile foodsTxt = TxtFile(filePath: "Macros Mapper/Refeições do Dia.txt");
 
   String foodsAsString = foodsTxt.asRawString;
