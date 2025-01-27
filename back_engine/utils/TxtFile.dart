@@ -15,7 +15,7 @@ class TxtFile {
       String fileContent = File(filePath).readAsStringSync();
       return fileContent;
     } catch (e) {
-      throw Exception("Erro ao ler arquivo ${e}");
+      throw Exception("Error at reading file \"$filePath\": ${e}");
     }
   }
 }

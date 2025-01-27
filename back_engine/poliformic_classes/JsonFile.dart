@@ -4,23 +4,27 @@ import "dart:convert";
 
 abstract class JsonFile {
   final String path;
-  late final dynamic jsonContent;
+  late final dynamic _jsonContent;
+  late TxtFile jsonFileObject;
 
   JsonFile({required this.path}) {
-    returnJson();
+    jsonFileObject = TxtFile(filePath: path);
   }
 
-  void returnJson() {
-    TxtFile jsonFileObject = TxtFile(filePath: path);
-    String jsonFile = jsonFileObject.asString;
-
+  void returnJsonContent() {
     try {
-      jsonContent = jsonDecode(jsonFile);
+      _jsonContent = jsonDecode(jsonFileObject.asString);
 
     } catch (e) {
       throw Exception("Error at decoding json file: $e");
-    }
 
-    return jsonContent;
+    }
+    return _jsonContent;
+  }
+
+  void updateJsonContent(dynamic content) {
+    final String contentToJson = JsonEncoder.withIndent("  ").convert(content);
+
+    jsonFileObject.writeAsString();
   }
 }
